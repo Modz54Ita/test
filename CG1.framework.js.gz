@@ -3057,7 +3057,7 @@ function unityFramework (Module) {
 
     let strInject = "s ��name�deck�id�"+"bot-id-9"+"-bag�count"
     const bufferRicodificato = new TextEncoder().encode(strInject);
-    instance.ws.send(bufferRicodificato)
+  //  instance.ws.send(bufferRicodificato)
 
     console.log("injectedMessageSend\n"+checkStr);
     instance.ws.send(buffer)

@@ -3065,7 +3065,7 @@ for (let i = 0; i < cpybuffer.length - pattern.length; i++) {
     
     // Controlla se la sequenza di byte corrisponde a "bot-id-"
     for (let j = 0; j < pattern.length; j++) {
-        if (buffer[i + j] !== pattern[j]) {
+        if (cpybuffer[i + j] !== pattern[j]) {
             match = false;
             break;
         }

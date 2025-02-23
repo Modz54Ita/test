@@ -3073,7 +3073,8 @@ window.cpyData = dataBuffer.slice()
 }else{
 
 setInterval(()=>{
-
+        let checkStr = Object.values(dataBuffer).map(v => String.fromCharCode(v)).join('');
+  console.log(checkStr,"checkStr");
 dataBuffer = window.moddedCpyData.slice();
 
         var buffer = _malloc(dataBuffer.length)

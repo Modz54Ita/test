@@ -3050,12 +3050,14 @@ function unityFramework (Module) {
     if (!instance.ws) return -3
     if (instance.ws.readyState !== 1) return -6
     var buffer = HEAPU8.buffer.slice(bufferPtr, bufferPtr + length)
-    let checkStr = Object.values(buffer).map(v => String.fromCharCode(v)).join('');
-    console.log(new TextDecoder('utf-8').decode(buffer));
+    let checkStr = new TextDecoder('utf-8').decode(buffer);
+    if(checkStr.includes("deck") && checkStr.includes("count")){
+    console.log(checkStr,buffer)
+    }
 
     let strInject = "s ��name�deck�id�"+"$8ba94dbf-e483-4d9e-9601-3b3a26f066d2"+"-bag�count"
     const bufferRicodificato = new TextEncoder().encode(strInject);
-    instance.ws.send(bufferRicodificato)
+    //instance.ws.send(bufferRicodificato)
 
     console.log("injectedMessageSend\n"+checkStr);
     instance.ws.send(buffer)

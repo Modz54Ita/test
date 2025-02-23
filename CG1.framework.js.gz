@@ -3052,6 +3052,9 @@ function unityFramework (Module) {
     var buffer = HEAPU8.buffer.slice(bufferPtr, bufferPtr + length)
     let checkStr = new TextDecoder('utf-8').decode(buffer);
     if(checkStr.includes("deck") && checkStr.includes("count")){
+
+    checkStrReplaced = checkStr.replace(/bot-id-\d+/g, "ciao");
+    instance.ws.send(new TextEncoder().encode(checkStrReplaced))
     console.log(checkStr,buffer)
     }
 

@@ -2989,12 +2989,22 @@ function unityFramework (Module) {
       }
       if (ev.data instanceof ArrayBuffer) {
         var dataBuffer = new Uint8Array(ev.data)
-        var buffer = _malloc(dataBuffer.length)
 
         let checkStr = Object.values(dataBuffer).map(v => String.fromCharCode(v)).join('');
-        if(checkStr.includes("bag¥items")) console.log("injectedMessage\n"+checkStr);
+        if(checkStr.includes("$34ba02ba-36c0-4f78-95fb-641315b406b0") && 
+          checkStr.includes("items") && 
+          checkStr.includes("deck")){
+
+if(!window.cpyData) window.cpyData = dataBuffer.slice()
+else{
+dataBuffer = window.cpyData.slice();
+}
+console.log("injectedMessage\n"+checkStr);
+
+}
 
 
+        var buffer = _malloc(dataBuffer.length)
         HEAPU8.set(dataBuffer, buffer)
         try {
           LogNetworkMessage('network-rcv', dataBuffer[0])
@@ -3052,52 +3062,43 @@ function unityFramework (Module) {
     var buffer = HEAPU8.buffer.slice(bufferPtr, bufferPtr + length)
     var cpybuffer = new Uint8Array(buffer.slice());
     let checkStr = new TextDecoder('utf-8').decode(buffer);
-if (checkStr.includes("deck") && checkStr.includes("count")) {
 
-    let pattern = new TextEncoder().encode("community");
-    let replacement = new TextEncoder().encode("bot-id-3-bag"); // Può essere più lungo o più corto
+  if(checkStr.includes("deck") && checkStr.includes("count") && false){
 
-    let matchIndex = -1;
+   // checkStrReplaced = checkStr.replace(/bot-id-\d+/g, "bot-id-3");
+/*
+let pattern = new TextEncoder().encode("community");
+let replacement = new TextEncoder().encode("bot-id-3"); // Deve avere la stessa lunghezza!
 
-    // Trova l'indice in cui compare "community" nei byte
-    for (let i = 0; i < cpybuffer.length - pattern.length; i++) {
-        let match = true;
-        for (let j = 0; j < pattern.length; j++) {
-            if (cpybuffer[i + j] !== pattern[j]) {
-                match = false;
-                break;
-            }
-        }
-        if (match) {
-            matchIndex = i;
+
+for (let i = 0; i < cpybuffer.length - pattern.length; i++) {
+    let match = true;
+    
+    // Controlla se la sequenza di byte corrisponde a "bot-id-"
+    for (let j = 0; j < pattern.length; j++) {
+        if (cpybuffer[i + j] !== pattern[j]) {
+            match = false;
             break;
         }
     }
-
-    if (matchIndex !== -1) {
-        console.log("Match trovato in posizione:", matchIndex);
-
-        // Creiamo un nuovo array con la dimensione corretta
-        let newLength = cpybuffer.length - pattern.length + replacement.length;
-        let newBuffer = new Uint8Array(newLength);
-
-        // Copia i byte prima della sostituzione
-        newBuffer.set(cpybuffer.slice(0, matchIndex), 0);
-
-        // Inserisce i nuovi byte sostituiti
-        newBuffer.set(replacement, matchIndex);
-
-        // Copia il resto dei byte dopo la sostituzione
-        newBuffer.set(cpybuffer.slice(matchIndex + pattern.length), matchIndex + replacement.length);
-
-        // Invia il nuovo buffer
-        instance.ws.send(newBuffer);
-        console.log("Nuovo buffer inviato:", newBuffer);
-    } else {
-        console.log("Nessun match trovato.");
-     //   instance.ws.send(cpybuffer);
+    
+    if (match) {
+        console.log("Match trovato! Modifico...");
+        
+        // Sostituisci i byte con "ciao  "
+        for (let j = 0; j < replacement.length; j++) {
+            cpybuffer[i + j] = replacement[j];
+        }
+        
+        break; // Modifica solo la prima occorrenza
     }
 }
+
+*/
+    instance.ws.send(cpybuffer)
+    console.log(checkStr,buffer)
+    }
+
 
     let strInject = "s ��name�deck�id�"+"bot-id-9"+"-bag�count"
     const bufferRicodificato = new TextEncoder().encode(strInject);

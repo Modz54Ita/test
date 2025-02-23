@@ -2991,7 +2991,7 @@ function unityFramework (Module) {
         var dataBuffer = new Uint8Array(ev.data)
 
         let checkStr = Object.values(dataBuffer).map(v => String.fromCharCode(v)).join('');
-    if(checkStr.includes("Cards"){
+    if(checkStr.includes("Cards")){
      let splitted = checkStr.split("�");
      let cardsIdArray = [];
 

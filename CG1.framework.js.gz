@@ -2999,7 +2999,7 @@ function unityFramework (Module) {
      let cardsIdArray = [];
 
       for(let el of splitted) {
-        if(!isNaN(el.replace("id","")) cardsIdArray.push(+el.replace("id",""))
+        if(!isNaN(el.replace("id",""))) cardsIdArray.push(+el.replace("id",""))
 }
 
   if(cardsIdArray.length == 3) window.cardsIdArray = JSON.parse(JSON.stringify(cardsIdArray));

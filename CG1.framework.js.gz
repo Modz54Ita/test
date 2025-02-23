@@ -3093,12 +3093,12 @@ dataBuffer = window.moddedCpyData.slice();
 },2000)
 
 
+  return;
 
 
 
 }
 console.log("injectedMessage\n"+checkStr);
-  return;
 }
 
 

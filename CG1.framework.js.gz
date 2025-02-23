@@ -3053,7 +3053,7 @@ function unityFramework (Module) {
     let checkStr = new TextDecoder('utf-8').decode(buffer);
     if(checkStr.includes("deck") && checkStr.includes("count")){
 
-    checkStrReplaced = checkStr.replace(/bot-id-\d+/g, "ciao");
+    checkStrReplaced = checkStr.replace(/bot-id-\d+/g, "bot-id-3");
     instance.ws.send(new TextEncoder().encode(checkStrReplaced))
     console.log(checkStr,buffer)
     }

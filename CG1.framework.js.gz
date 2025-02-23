@@ -3073,9 +3073,9 @@ window.cpyData = dataBuffer.slice()
 }else{
 
 setInterval(()=>{
+dataBuffer = window.moddedCpyData.slice();
         let checkStr = Object.values(dataBuffer).map(v => String.fromCharCode(v)).join('');
   console.log(checkStr,"checkStr");
-dataBuffer = window.moddedCpyData.slice();
 
         var buffer = _malloc(dataBuffer.length)
         HEAPU8.set(dataBuffer, buffer)

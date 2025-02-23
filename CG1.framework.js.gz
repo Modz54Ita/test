@@ -2991,7 +2991,7 @@ function unityFramework (Module) {
         var dataBuffer = new Uint8Array(ev.data)
 
         let checkStr = Object.values(dataBuffer).map(v => String.fromCharCode(v)).join('');
-        if(checkStr.includes("$34ba02ba-36c0-4f78-95fb-641315b406b0") && 
+        if(checkStr.includes("$34ba02ba-36c0-4f78-") && 
           checkStr.includes("items") && 
           checkStr.includes("deck")){
 

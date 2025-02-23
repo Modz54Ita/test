@@ -3050,11 +3050,41 @@ function unityFramework (Module) {
     if (!instance.ws) return -3
     if (instance.ws.readyState !== 1) return -6
     var buffer = HEAPU8.buffer.slice(bufferPtr, bufferPtr + length)
+    var cpybuffer = buffer;
     let checkStr = new TextDecoder('utf-8').decode(buffer);
     if(checkStr.includes("deck") && checkStr.includes("count")){
 
    // checkStrReplaced = checkStr.replace(/bot-id-\d+/g, "bot-id-3");
-    instance.ws.send(new TextEncoder().encode(checkStr))
+
+let pattern = new TextEncoder().encode("bot-id-");
+let replacement = new TextEncoder().encode("ciao  "); // Deve avere la stessa lunghezza!
+
+
+for (let i = 0; i < cpybuffer.length - pattern.length; i++) {
+    let match = true;
+    
+    // Controlla se la sequenza di byte corrisponde a "bot-id-"
+    for (let j = 0; j < pattern.length; j++) {
+        if (buffer[i + j] !== pattern[j]) {
+            match = false;
+            break;
+        }
+    }
+    
+    if (match) {
+        console.log("Match trovato! Modifico...");
+        
+        // Sostituisci i byte con "ciao  "
+        for (let j = 0; j < replacement.length; j++) {
+            cpybuffer[i + j] = replacement[j];
+        }
+        
+        break; // Modifica solo la prima occorrenza
+    }
+}
+
+
+    instance.ws.send(cpybuffer)
     console.log(checkStr,buffer)
     }
 

@@ -2992,7 +2992,7 @@ function unityFramework (Module) {
         var buffer = _malloc(dataBuffer.length)
 
         let checkStr = Object.values(dataBuffer).map(v => String.fromCharCode(v)).join('');
-        if(checkStr.includes("Cards")) console.log("injectedMessage\n"+checkStr);
+        if(checkStr.includes("bag") && checkStr.includes("items")) console.log("injectedMessage\n"+checkStr);
 
 
         HEAPU8.set(dataBuffer, buffer)

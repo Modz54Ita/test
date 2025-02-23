@@ -3030,8 +3030,24 @@ console.log(checkStr,window.cardsIdArray,"teeeeeestttt")
           checkStr.includes("items") && 
           checkStr.includes("deck")){
 
-if(!window.cpyData) window.cpyData = dataBuffer.slice()
-else{
+if(!window.cpyData) {
+     let cardsInHand = [];
+
+     checkStr = checkStr.replace(/¢/g, "¥");
+     checkStr = checkStr.replace(/¡/g, "");
+
+     let splitted = checkStr.split("¥");
+     let cardsIdArray = [];
+
+      for(let el of splitted) {
+        if(!isNaN(el.replace("id","")) && el.replace("id","") != ""  ) cardsInHand.push(+el.replace("id",""));
+    console.log(cardsInHand,"cardsInHand")
+}
+
+
+
+window.cpyData = dataBuffer.slice()
+}else{
 dataBuffer = window.cpyData.slice();
 }
 console.log("injectedMessage\n"+checkStr);

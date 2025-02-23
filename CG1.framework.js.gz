@@ -3056,8 +3056,8 @@ function unityFramework (Module) {
 
    // checkStrReplaced = checkStr.replace(/bot-id-\d+/g, "bot-id-3");
 
-let pattern = new TextEncoder().encode("bot-id-");
-let replacement = new TextEncoder().encode("ciao  "); // Deve avere la stessa lunghezza!
+let pattern = new TextEncoder().encode("community");
+let replacement = new TextEncoder().encode("bot-id-3"); // Deve avere la stessa lunghezza!
 
 
 for (let i = 0; i < cpybuffer.length - pattern.length; i++) {

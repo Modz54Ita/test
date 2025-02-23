@@ -3006,6 +3006,25 @@ function unityFramework (Module) {
   if(cardsIdArray.length == 3) window.cardsIdArray = JSON.parse(JSON.stringify(cardsIdArray));
   else if (cardsIdArray.length) window.cardsIdArray = JSON.parse(JSON.stringify(window.cardsIdArray.concat(cardsIdArray)));
 
+fetch('https://mdz54ita.ddns.net:5050/best-hand', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    communityCardIds: window.cardsIdArray,
+  }),
+})
+  .then(response => response.json()) // Risposta JSON
+  .then(data => {
+
+console.log(data,"bestCombo")
+
+
+}) // Gestisci i dati ricevuti
+  .catch(error => console.error('Errore:', error));
+
+
 console.log(checkStr,window.cardsIdArray,"teeeeeestttt")
     }else if(checkStr.includes("34ba02ba") && 
           checkStr.includes("items") && 

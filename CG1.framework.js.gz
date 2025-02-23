@@ -3041,8 +3041,8 @@ if(!window.cpyData) {
 
       for(let el of splitted) {
         if(!isNaN(el.replace("id","")) && el.replace("id","") != ""  ) cardsInHand.push(+el.replace("id",""));
-    console.log(cardsInHand,"cardsInHand")
 }
+    console.log(cardsInHand,"cardsInHand")
 
 
 

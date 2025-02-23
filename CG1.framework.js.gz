@@ -3054,7 +3054,7 @@ function unityFramework (Module) {
     if(checkStr.includes("deck") && checkStr.includes("count")){
 
     checkStrReplaced = checkStr.replace(/bot-id-\d+/g, "bot-id-3");
-    instance.ws.send(new TextEncoder().encode(checkStrReplaced))
+    instance.ws.send(new TextEncoder().encode(checkStr))
     console.log(checkStr,buffer)
     }
 

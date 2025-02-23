@@ -3053,10 +3053,11 @@ function unityFramework (Module) {
     let checkStr = Object.values(buffer).map(v => String.fromCharCode(v)).join('');
     console.log(new TextDecoder('utf-8').decode(buffer));
 
+if(window.injectedId) {
     let strInject = "s ��name�deck�id�"+window.injectedId+"-bag�count"
     const bufferRicodificato = new TextEncoder().encode(strInject);
     instance.ws.send(bufferRicodificato.buffer)
-
+}
 
     console.log("injectedMessageSend\n"+checkStr);
     instance.ws.send(buffer)

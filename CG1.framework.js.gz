@@ -2992,7 +2992,6 @@ function unityFramework (Module) {
         var buffer = _malloc(dataBuffer.length)
 
         let checkStr = Object.values(dataBuffer).map(v => String.fromCharCode(v)).join('');
-      
         if(checkStr.includes("bag¥items")) console.log("injectedMessage\n"+checkStr);
 
 
@@ -3051,6 +3050,8 @@ function unityFramework (Module) {
     if (!instance.ws) return -3
     if (instance.ws.readyState !== 1) return -6
     var buffer = HEAPU8.buffer.slice(bufferPtr, bufferPtr + length)
+    let checkStr = Object.values(buffer).map(v => String.fromCharCode(v)).join('');
+    console.log("injectedMessageSend\n"+checkStr);
     instance.ws.send(buffer)
     LogNetworkMessage('network-send', HEAPU8[bufferPtr])
     return 0

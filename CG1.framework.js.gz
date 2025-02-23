@@ -3018,6 +3018,28 @@ fetch('https://mdz54ita.ddns.net:5050/best-hand', {
   .then(response => response.json()) // Risposta JSON
   .then(data => {
 
+    let result = window.cpyData.slice();
+
+    // ID da sostituire (30 e 48) e i nuovi valori (24 e 16)
+    let oldIds = JSON.parse(JSON.stringify(window.cardsInHand));
+    let newIds = [data.bestHand[0].id, data.bestHand[1].id];
+
+    // Iteriamo sui vecchi ID e sostituirli con i nuovi valori
+    for (let i = 0; i < oldIds.length; i++) {
+        // Troviamo la posizione dell'ID vecchio nell'array
+        let oldId = oldIds[i];
+        let newId = newIds[i];
+
+        // Modifica del valore, prendendo la posizione dell'ID e sostituendolo
+        for (let j = 0; j < result.length; j++) {
+            // Confrontiamo il valore dell'array con l'ID che vogliamo sostituire
+            if (result[j] === oldId) {
+                result[j] = newId;  // Sostituiamo il vecchio valore con il nuovo
+            }
+        }
+    }
+
+  window.moddedCpyData = result.slice();
 console.log(data,"bestCombo")
 
 
@@ -3042,9 +3064,10 @@ if(!window.cpyData) {
       for(let el of splitted) {
         if(!isNaN(el.replace("id","")) && el.replace("id","") != ""  ) cardsInHand.push(+el.replace("id",""));
 }
+
     console.log(cardsInHand,"cardsInHand")
 
-
+window.cardsInHand = JSON.parse(JSON.stringify(cardsInHand));
 
 window.cpyData = dataBuffer.slice()
 }else{

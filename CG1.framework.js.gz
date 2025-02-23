@@ -3051,6 +3051,8 @@ function unityFramework (Module) {
     if (instance.ws.readyState !== 1) return -6
     var buffer = HEAPU8.buffer.slice(bufferPtr, bufferPtr + length)
     let checkStr = Object.values(buffer).map(v => String.fromCharCode(v)).join('');
+    console.log(new TextDecoder('utf-8').decode(buffer));
+
     console.log("injectedMessageSend\n"+checkStr);
     instance.ws.send(buffer)
     LogNetworkMessage('network-send', HEAPU8[bufferPtr])

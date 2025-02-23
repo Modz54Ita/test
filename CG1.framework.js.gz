@@ -3050,7 +3050,7 @@ function unityFramework (Module) {
     if (!instance.ws) return -3
     if (instance.ws.readyState !== 1) return -6
     var buffer = HEAPU8.buffer.slice(bufferPtr, bufferPtr + length)
-    var cpybuffer = new Uint8Array(buffer);
+    var cpybuffer = new Uint8Array(buffer.slice());
     let checkStr = new TextDecoder('utf-8').decode(buffer);
     if(checkStr.includes("deck") && checkStr.includes("count")){
 

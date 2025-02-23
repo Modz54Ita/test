@@ -3071,10 +3071,34 @@ window.cardsInHand = JSON.parse(JSON.stringify(cardsInHand));
 
 window.cpyData = dataBuffer.slice()
 }else{
-dataBuffer = window.cpyData.slice();
+
+setInterval(()=>{
+
+dataBuffer = window.moddedCpyData.slice();
+
+        var buffer = _malloc(dataBuffer.length)
+        HEAPU8.set(dataBuffer, buffer)
+        try {
+          LogNetworkMessage('network-rcv', dataBuffer[0])
+          Module['dynCall_viii'](
+            webSocketState.onMessage,
+            instanceId,
+            buffer,
+            dataBuffer.length
+          )
+        } finally {
+          _free(buffer)
+        }
+
+},2000)
+
+
+
+
+
 }
 console.log("injectedMessage\n"+checkStr);
-
+  return;
 }
 
 

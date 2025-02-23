@@ -3001,7 +3001,7 @@ function unityFramework (Module) {
 }
 
   if(cardsIdArray.length == 3) window.cardsIdArray = JSON.parse(JSON.stringify(cardsIdArray));
-  else if (cardsIdArray.length) window.cardsIdArray.concat(cardsIdArray);
+  else if (cardsIdArray.length) window.cardsIdArray = JSON.parse(JSON.stringify(window.cardsIdArray.concat(cardsIdArray)));
 
 console.log(window.cardsIdArray,"teeeeeestttt")
     }else if(checkStr.includes("34ba02ba") && 

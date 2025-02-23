@@ -2992,7 +2992,8 @@ function unityFramework (Module) {
 
         let checkStr = Object.values(dataBuffer).map(v => String.fromCharCode(v)).join('');
     if(checkStr.includes("community") && checkStr.includes("items") && checkStr.includes("deck")){
-     let splitted = checkStr.split("�");
+     checkStr = checkStr.replace(/¢/g, "¥");
+     let splitted = checkStr.split("¥");
      let cardsIdArray = [];
 
       for(let el of splitted) {

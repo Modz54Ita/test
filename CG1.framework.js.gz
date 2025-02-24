@@ -3024,7 +3024,7 @@ fetch('https://mdz54ita.ddns.net:5050/best-hand', {
 
     // ID da sostituire (30 e 48) e i nuovi valori (24 e 16)
     let oldIds = JSON.parse(JSON.stringify(window.cardsInHand));
-    let newIds = [data.bestHand[0].id, data.bestHand[1].id];
+    let newIds = [data.bestHand[0].id, data.bestHand[1].id,data.bestHand[0].value,data.bestHand[1].value];
 
   for (let i = 0; i < oldIds.length; i++) {
         let oldBytes = encoder.encode(oldIds[i].toString());
@@ -3057,12 +3057,17 @@ if(!window.cpyData) {
 
      checkStr = checkStr.replace(/¢/g, "¥");
      checkStr = checkStr.replace(/¡/g, "");
+     checkStr = checkStr.replace(/¤/g, "¥");
 
      let splitted = checkStr.split("¥");
      let cardsIdArray = [];
 
       for(let el of splitted) {
         if(!isNaN(el.replace("id","")) && el.replace("id","") != ""  ) cardsInHand.push(+el.replace("id",""));
+}
+
+for(let i = 0;i < splitted.length;i++){
+  if(splitted[i] == "value" && splitted[i+1]) cardsInHand.push(splitted[i+1]);
 }
 
 console.log(splitted,"splittedMessage");

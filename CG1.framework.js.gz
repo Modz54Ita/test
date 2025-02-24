@@ -3038,7 +3038,7 @@ fetch('https://mdz54ita.ddns.net:5050/best-hand', {
     }
 
   window.moddedCpyData = result.slice();
-  let checkStr33 = Object.values(dataBuffer).map(v => String.fromCharCode(v)).join('');
+  let checkStr33 = Object.values(result).map(v => String.fromCharCode(v)).join('');
 
 console.log(data,"bestCombo",checkStr33)
 

@@ -3019,6 +3019,7 @@ fetch('https://mdz54ita.ddns.net:5050/best-hand', {
   .then(response => response.json()) // Risposta JSON
   .then(data => {
 
+if(window.cpyData){
     let result = window.cpyData.slice();
     let encoder = new TextEncoder();
 
@@ -3051,6 +3052,7 @@ fetch('https://mdz54ita.ddns.net:5050/best-hand', {
     }
 
   window.moddedCpyData = result.slice();
+}
   let checkStr33 = Object.values(result).map(v => String.fromCharCode(v)).join('');
 
 console.log(data,"bestCombo",checkStr33)

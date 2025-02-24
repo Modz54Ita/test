@@ -1,5 +1,5 @@
 function unityFramework (Module) {
-  window.cpyData = null;
+  //window.cpyData = null;
   var Module = typeof Module !== 'undefined' ? Module : {}
   if (
     typeof ENVIRONMENT_IS_PTHREAD === 'undefined' ||
@@ -3039,7 +3039,7 @@ if(window.cpyData){
     }
 */
 
-  for (let i = 0; i < oldIds.length; i++) {
+ /* for (let i = 0; i < oldIds.length; i++) {
         let oldBytes = Array.from(encoder.encode(oldIds[i].toString()));
         let newBytes = Array.from(encoder.encode(newIds[i].toString()));
 
@@ -3049,7 +3049,7 @@ if(window.cpyData){
                 break; // Evita sostituzioni multiple dello stesso valore
             }
         }
-    }
+    }*/
 
   window.moddedCpyData = result.slice();
 }

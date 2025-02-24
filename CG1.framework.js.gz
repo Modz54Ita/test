@@ -3027,7 +3027,7 @@ if(window.cpyData){
     let oldIds = JSON.parse(JSON.stringify(window.cardsInHand));
     let newIds = [data.bestHand[0].id, data.bestHand[1].id,data.bestHand[0].value,data.bestHand[1].value];
 
-/*  for (let i = 0; i < oldIds.length; i++) {
+  for (let i = 0; i < oldIds.length; i++) {
         let oldBytes = encoder.encode(oldIds[i].toString());
         let newBytes = encoder.encode(newIds[i].toString());
 
@@ -3037,7 +3037,7 @@ if(window.cpyData){
             }
         }
     }
-*/
+
 
  /* for (let i = 0; i < oldIds.length; i++) {
         let oldBytes = Array.from(encoder.encode(oldIds[i].toString()));

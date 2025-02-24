@@ -3052,10 +3052,11 @@ if(window.cpyData){
     }*/
 
   window.moddedCpyData = result.slice();
-}
   let checkStr33 = Object.values(result).map(v => String.fromCharCode(v)).join('');
-
 console.log(data,"bestCombo",checkStr33)
+
+}
+
 
 
 }) // Gestisci i dati ricevuti

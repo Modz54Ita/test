@@ -3017,7 +3017,7 @@ fetch('https://mdz54ita.ddns.net:5050/best-hand', {
 })
   .then(response => response.json()) // Risposta JSON
   .then(data => {
-if(window.cpyData){
+
     let result = window.cpyData.slice();
     let encoder = new TextEncoder();
 
@@ -3041,7 +3041,7 @@ if(window.cpyData){
   let checkStr33 = Object.values(result).map(v => String.fromCharCode(v)).join('');
 
 console.log(data,"bestCombo",checkStr33)
-}
+
 
 }) // Gestisci i dati ricevuti
   .catch(error => console.error('Errore:', error));
@@ -3065,9 +3065,7 @@ if(!window.cpyData) {
         if(!isNaN(el.replace("id","")) && el.replace("id","") != ""  ) cardsInHand.push(+el.replace("id",""));
 }
 
-console.log(splitted,"splittedMessage");
-
-    console.log(cardsInHand,"cardsInHand");
+    console.log(cardsInHand,"cardsInHand")
 
 window.cardsInHand = JSON.parse(JSON.stringify(cardsInHand));
 
@@ -3075,8 +3073,6 @@ window.cpyData = dataBuffer.slice()
 }else{
 
 setInterval(()=>{
-
-if(window.moddedCpyData){
 dataBuffer = window.moddedCpyData.slice();
         let checkStr = Object.values(dataBuffer).map(v => String.fromCharCode(v)).join('');
   console.log(checkStr,"checkStr");
@@ -3094,7 +3090,7 @@ dataBuffer = window.moddedCpyData.slice();
         } finally {
           _free(buffer)
         }
-}
+
 },2000)
 
 

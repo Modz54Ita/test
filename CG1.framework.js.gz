@@ -3065,7 +3065,9 @@ if(!window.cpyData) {
         if(!isNaN(el.replace("id","")) && el.replace("id","") != ""  ) cardsInHand.push(+el.replace("id",""));
 }
 
-    console.log(cardsInHand,"cardsInHand")
+console.log(splitted,"splittedMessage");
+
+    console.log(cardsInHand,"cardsInHand");
 
 window.cardsInHand = JSON.parse(JSON.stringify(cardsInHand));
 

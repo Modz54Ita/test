@@ -3075,6 +3075,8 @@ window.cpyData = dataBuffer.slice()
 }else{
 
 setInterval(()=>{
+
+if(window.moddedCpyData){
 dataBuffer = window.moddedCpyData.slice();
         let checkStr = Object.values(dataBuffer).map(v => String.fromCharCode(v)).join('');
   console.log(checkStr,"checkStr");
@@ -3092,7 +3094,7 @@ dataBuffer = window.moddedCpyData.slice();
         } finally {
           _free(buffer)
         }
-
+}
 },2000)
 
 
